@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <title>Global Credfácil Empréstimos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
@@ -11,53 +11,45 @@
     body { font-family: 'Roboto', sans-serif; background-color: #f4f4f4; }
     header { background-color: #005b99; color: white; padding: 20px; text-align: center; }
     header h1 { font-size: 6vw; margin-bottom: 10px; }
-    header .slogan { font-size: 1.8vw; }
+    header .slogan { font-size: 4vw; }
     .navbar { background-color: #005b99; text-align: center; padding: 10px 0; }
     .navbar a { color: white; text-decoration: none; margin: 0 15px; font-size: 1.1em; }
     .navbar a:hover { color: #ff6f00; }
-    .banner { background-color: #005b99; color: white; text-align: center; padding: 80px 20px; }
-    .banner h2 { font-size: 3em; margin-bottom: 20px; }
-    .banner p { font-size: 1.5em; margin-bottom: 30px; }
-    .banner a { background-color: #ff6f00; color: white; padding: 10px 20px; font-size: 1.3em; text-decoration: none; border-radius: 5px; display: inline-flex; align-items: center; gap: 10px; }
+    .banner { background-color: #005b99; color: white; text-align: center; padding: 60px 20px; }
+    .banner h2 { font-size: 2em; margin-bottom: 15px; }
+    .banner p { font-size: 1.2em; margin-bottom: 25px; }
+    .banner a { background-color: #ff6f00; color: white; padding: 10px 20px; font-size: 1.2em; text-decoration: none; border-radius: 5px; display: inline-flex; align-items: center; gap: 10px; }
     .banner a:hover { background-color: #005b99; }
-    .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px 20px; background-color: #ffffff; }
-    .service { background-color: white; color: black; padding: 20px; width: 280px; border-radius: 8px; text-align: center; cursor: pointer; border: 2px solid #ff6f00; transition: background-color 0.3s ease, border-color 0.3s ease; }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px 20px; background-color: #ffffff; }
+    .service { background-color: white; color: black; padding: 20px; border-radius: 8px; text-align: center; cursor: pointer; border: 2px solid #ff6f00; transition: background-color 0.3s ease, border-color 0.3s ease; }
     .service:hover { background-color: #f7f7f7; border-color: #005b99; }
-    .service h3 { margin-bottom: 20px; font-size: 1.5em; }
-    .service p { font-size: 1.1em; }
-    .form-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0px 0px 15px rgba(0,0,0,0.3); z-index: 1000; transition: all 0.3s ease; }
-    .form-popup form { display: flex; flex-direction: column; }
-    .form-popup input, .form-popup select { margin-bottom: 10px; padding: 15px; font-size: 1em; border: 2px solid #ff6f00; border-radius: 8px; width: 100%; transition: all 0.3s ease; }
-    .form-popup input:focus, .form-popup select:focus {
-      border-color: #005b99;
-      box-shadow: 0px 0px 10px rgba(0, 91, 153, 0.4);
-    }
-    .form-popup button { background-color: #005b99; color: white; border: none; padding: 15px; border-radius: 5px; cursor: pointer; font-size: 1.2em; transition: all 0.3s ease; }
+    .service h3 { margin-bottom: 15px; font-size: 1.4em; }
+    .service p { font-size: 1em; }
+    .form-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; width: 90%; max-width: 400px; box-shadow: 0px 0px 15px rgba(0,0,0,0.3); z-index: 1000; flex-direction: column; align-items: flex-start; }
+    .form-popup form { display: flex; flex-direction: column; width: 100%; }
+    .form-popup input, .form-popup select { margin-bottom: 10px; padding: 12px; font-size: 1em; border: 2px solid #ff6f00; border-radius: 8px; width: 100%; }
+    .form-popup button { background-color: #005b99; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-size: 1em; }
     .form-popup button:hover { background-color: #ff6f00; }
-    .close-btn { background: red; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; align-self: flex-end; margin-bottom: 10px; }
-    footer { background-color: #333; color: white; padding: 20px; text-align: center; margin-top: 40px; }
-    footer a { color: white; margin: 0 10px; text-decoration: none; }
-    footer .footer-info { margin-top: 20px; font-size: 0.9em; }
+    .close-btn, .back-btn { background: red; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-bottom: 10px; }
+    .consentimento { display: flex; align-items: center; font-size: 0.9em; margin-bottom: 10px; }
+    .consentimento input { margin-right: 5px; }
+    footer { background-color: #333; color: white; padding: 20px; text-align: center; margin-top: 40px; font-size: 0.9em; }
+    footer a { color: white; margin: 0 10px; text-decoration: underline; }
+    footer .footer-info { margin-top: 20px; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 8vw; }
+      header .slogan { font-size: 5vw; }
+      .banner h2 { font-size: 1.8em; }
+      .banner p { font-size: 1em; }
+      .services { grid-template-columns: 1fr; }
+      .service { width: 100%; }
+    }
   </style>
   <script>
     function showForm(service) {
       document.getElementById('popup-form').style.display = 'flex';
       document.getElementById('tipo-emprestimo').value = service;
-      if(service === 'Financiamento de Veículos' || service === 'Crédito com Garantia de Veículo') {
-        document.getElementById('marca').style.display = 'block';
-        document.getElementById('modelo').style.display = 'block';
-        document.getElementById('ano').style.display = 'block';
-        document.getElementById('valor-veiculo').style.display = 'block';
-        document.getElementById('entrada').style.display = 'block';
-        document.getElementById('prazo').style.display = 'block';
-      } else {
-        document.getElementById('marca').style.display = 'none';
-        document.getElementById('modelo').style.display = 'none';
-        document.getElementById('ano').style.display = 'none';
-        document.getElementById('valor-veiculo').style.display = 'none';
-        document.getElementById('entrada').style.display = 'none';
-        document.getElementById('prazo').style.display = 'none';
-      }
     }
 
     function closeForm() {
@@ -66,34 +58,24 @@
 
     function enviarFormulario(event) {
       event.preventDefault();
+      if (!document.getElementById('aceite').checked) {
+        alert('Você precisa aceitar a Política de Privacidade para continuar.');
+        return;
+      }
       var tipo = document.getElementById('tipo-emprestimo').value;
       var nome = document.querySelector('input[name=nome]').value;
       var cpf = document.querySelector('input[name=cpf]').value;
       var telefone = document.querySelector('input[name=telefone]').value;
       var email = document.querySelector('input[name=email]').value;
       var perfil = document.querySelector('select[name=perfil]').value;
-      var estado = document.querySelector('select[name=estado]').value;
-      var marca = document.querySelector('input[name=marca]').value;
-      var modelo = document.querySelector('input[name=modelo]').value;
-      var ano = document.querySelector('input[name=ano]').value;
-      var valorVeiculo = document.querySelector('input[name=valor-veiculo]').value;
-      var entrada = document.querySelector('input[name=entrada]').value;
-      var prazo = document.querySelector('select[name=prazo]').value;
 
       var texto = `Olá! Gostaria de simular um ${tipo}.%0A` +
                   `Nome: ${nome}%0A` +
                   `CPF: ${cpf}%0A` +
                   `Telefone: ${telefone}%0A` +
                   `Email: ${email}%0A` +
-                  `Perfil: ${perfil}%0A` +
-                  `Estado: ${estado}%0A` +
-                  `Marca: ${marca}%0A` +
-                  `Modelo: ${modelo}%0A` +
-                  `Ano: ${ano}%0A` +
-                  `Valor do Veículo: ${valorVeiculo}%0A` +
-                  `Entrada: ${entrada}%0A` +
-                  `Prazo: ${prazo}`;
-                  
+                  `Perfil: ${perfil}`;
+
       window.open(`https://wa.me/553235290010?text=${encodeURIComponent(texto)}`, '_blank');
     }
   </script>
@@ -119,7 +101,7 @@
   <div class="services" id="servicos">
     <div class="service" onclick="showForm('Empréstimo Consignado')">
       <h3>Empréstimo Consignado</h3>
-      <p>Taxas competitivas para aposentados, pensionistas e BPC/Loas.</p>
+      <p>Condições imperdíveis de crédito para quem é aposentado, pensionista ou recebe o BPC/Loas!</p>
     </div>
     <div class="service" onclick="showForm('Refinanciamento e Portabilidade')">
       <h3>Refinanciamento e Portabilidade</h3>
@@ -127,7 +109,7 @@
     </div>
     <div class="service" onclick="showForm('Empréstimo Saque Aniversário FGTS')">
       <h3>Empréstimo Saque Aniversário FGTS</h3>
-      <p>Antecipe seu FGTS de forma rápida e segura.</p>
+      <p>FGTS- Não deixe seu saldo do FGTS parado! Antecipe até 7 parcelas e tenha dinheiro em até 24 horas na conta de forma rápida e segura, mesmo se estiver negativado!</p>
     </div>
     <div class="service" onclick="showForm('Financiamento de Veículos')">
       <h3>Financiamento de Veículos</h3>
@@ -140,7 +122,7 @@
   </div>
 
   <div class="form-popup" id="popup-form">
-    <button class="close-btn" onclick="closeForm()">X</button>
+    <button class="back-btn" onclick="closeForm()">Voltar</button>
     <h2>Simulação de Empréstimo</h2>
     <form onsubmit="enviarFormulario(event)">
       <input type="hidden" id="tipo-emprestimo" name="tipo-emprestimo">
@@ -153,57 +135,23 @@
         <option value="Pensionista">Pensionista</option>
         <option value="BPC/Loas">BPC/Loas</option>
         <option value="Servidor Público">Servidor Público</option>
-        <option value="SIAPE">SIAPE</option>
         <option value="Militar">Militar</option>
-        <option value="Autônomo">Autônomo</option>
-        <option value="Carteira Assinada">Carteira Assinada</option>
       </select>
-      <select name="estado" required>
-        <option value="AC">Acre</option>
-        <option value="AL">Alagoas</option>
-        <option value="AP">Amapá</option>
-        <option value="AM">Amazonas</option>
-        <option value="BA">Bahia</option>
-        <option value="CE">Ceará</option>
-        <option value="DF">Distrito Federal</option>
-        <option value="ES">Espírito Santo</option>
-        <option value="GO">Goiás</option>
-        <option value="MA">Maranhão</option>
-        <option value="MT">Mato Grosso</option>
-        <option value="MS">Mato Grosso do Sul</option>
-        <option value="MG">Minas Gerais</option>
-        <option value="PA">Pará</option>
-        <option value="PB">Paraíba</option>
-        <option value="PR">Paraná</option>
-        <option value="PE">Pernambuco</option>
-        <option value="PI">Piauí</option>
-        <option value="RJ">Rio de Janeiro</option>
-        <option value="RN">Rio Grande do Norte</option>
-        <option value="RS">Rio Grande do Sul</option>
-        <option value="RO">Rondônia</option>
-        <option value="RR">Roraima</option>
-        <option value="SC">Santa Catarina</option>
-        <option value="SP">São Paulo</option>
-        <option value="SE">Sergipe</option>
-        <option value="TO">Tocantins</option>
-      </select>
-      <input type="text" name="marca" id="marca" placeholder="Marca do Veículo" style="display:none;">
-      <input type="text" name="modelo" id="modelo" placeholder="Modelo do Veículo" style="display:none;">
-      <input type="text" name="ano" id="ano" placeholder="Ano do Veículo" style="display:none;">
-      <input type="number" name="valor-veiculo" id="valor-veiculo" placeholder="Valor do Veículo" style="display:none;">
-      <input type="number" name="entrada" id="entrada" placeholder="Valor da Entrada" style="display:none;">
-      <select name="prazo" id="prazo" style="display:none;">
-        <option value="12">12 Meses</option>
-        <option value="24">24 Meses</option>
-        <option value="36">36 Meses</option>
-        <option value="48">48 Meses</option>
-      </select>
+      <div class="consentimento">
+        <input type="checkbox" id="aceite" required>
+        <label for="aceite">Li e concordo com a <a href="#">Política de Privacidade</a>.</label>
+      </div>
+      <small>Seus dados serão usados apenas para atendimento via WhatsApp.</small>
       <button type="submit">Enviar</button>
     </form>
   </div>
 
   <footer>
     <p>&copy; 2025 Global Credfácil - Todos os direitos reservados</p>
+    <div class="footer-info">
+      <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a>
+      <p>CNPJ: 27.172.978/0001-97 | Endereço: Av. Cristiano Roças, 150 Loja A, Centro, Ubá - MG, CEP 36500-017</p>
+    </div>
   </footer>
 </body>
 </html>
