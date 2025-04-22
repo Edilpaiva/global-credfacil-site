@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -39,7 +38,6 @@
     footer { background-color: #333; color: white; padding: 20px; text-align: center; margin-top: 40px; font-size: 0.9em; }
     footer a { color: white; margin: 0 10px; text-decoration: underline; }
     footer .footer-info { margin-top: 20px; }
-
     @media (max-width: 600px) {
       header h1 { font-size: 8vw; }
       header .slogan { font-size: 5vw; }
@@ -89,87 +87,110 @@
   </script>
 </head>
 <body>
-  <header>
-    <h1>Global Credfácil Empréstimos</h1>
-    <p class="slogan">Seu Crédito Rápido e Sem Burocracia</p>
-  </header>
+<header>
+  <h1>Global Credfácil Empréstimos</h1>
+  <p class="slogan">Seu Crédito Rápido e Sem Burocracia</p>
+</header>
 
-  <div class="navbar">
-    <a href="#home">Início</a>
-    <a href="#servicos">Serviços</a>
-    <a href="https://wa.me/553235290010" target="_blank"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
+<div class="navbar">
+  <a href="#home">Início</a>
+  <a href="#servicos">Serviços</a>
+  <a href="https://wa.me/553235290010" target="_blank"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
+</div>
+
+<div class="banner">
+  <h2>Empréstimos Facilitados Para Você!</h2>
+  <p>Com as melhores taxas e condições do mercado. Fale conosco agora!</p>
+  <a href="https://wa.me/553235290010" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+</div>
+
+<div class="services" id="servicos">
+  <div class="service" onclick="showForm('Empréstimo Consignado')">
+    <h3>Empréstimo Consignado</h3>
+    <p>Condições imperdíveis de crédito para quem é aposentado, pensionista ou recebe o BPC/Loas!</p>
   </div>
-
-  <div class="banner">
-    <h2>Empréstimos Facilitados Para Você!</h2>
-    <p>Com as melhores taxas e condições do mercado. Fale conosco agora!</p>
-    <a href="https://wa.me/553235290010" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <div class="service" onclick="showForm('Refinanciamento e Portabilidade')">
+    <h3>Refinanciamento e Portabilidade</h3>
+    <p>Troque seu crédito por condições melhores!</p>
   </div>
-
-  <div class="services" id="servicos">
-    <div class="service" onclick="showForm('Empréstimo Consignado')">
-      <h3>Empréstimo Consignado</h3>
-      <p>Condições imperdíveis de crédito para quem é aposentado, pensionista ou recebe o BPC/Loas!</p>
-    </div>
-    <div class="service" onclick="showForm('Refinanciamento e Portabilidade')">
-      <h3>Refinanciamento e Portabilidade</h3>
-      <p>Troque seu crédito por condições melhores!</p>
-    </div>
-    <div class="service" onclick="showForm('Empréstimo Saque Aniversário FGTS')">
-      <h3>Empréstimo Saque Aniversário FGTS</h3>
-      <p>FGTS- Não deixe seu saldo do FGTS parado! Antecipe até 7 parcelas e tenha dinheiro em até 24 horas na conta de forma rápida e segura, mesmo se estiver negativado!</p>
-    </div>
-    <div class="service" onclick="showForm('Financiamento de Veículos')">
-      <h3>Financiamento de Veículos</h3>
-      <p>Financiamos veículos novos e usados com ótimas condições.</p>
-    </div>
-    <div class="service" onclick="showForm('Crédito com Garantia de Veículo')">
-      <h3>Crédito com Garantia de Veículo</h3>
-      <p>Use seu veículo como garantia e tenha acesso a taxas menores.</p>
-    </div>
+  <div class="service" onclick="showForm('Empréstimo Saque Aniversário FGTS')">
+    <h3>Empréstimo Saque Aniversário FGTS</h3>
+    <p>FGTS- Não deixe seu saldo do FGTS parado! Antecipe até 7 parcelas e tenha dinheiro em até 24 horas na conta de forma rápida e segura, mesmo se estiver negativado!</p>
   </div>
-
-  <div class="form-popup" id="popup-form">
-    <button class="back-btn" onclick="closeForm()">Voltar</button>
-    <h2>Simulação de Empréstimo</h2>
-    <form action="https://formsubmit.co/globalcredfacil@gmail.com" method="POST">
-      <input type="hidden" id="tipo-emprestimo" name="tipo-emprestimo">
-      <input type="text" name="nome" placeholder="Seu Nome" required>
-      <input type="text" name="cpf" placeholder="Seu CPF" required>
-      <input type="tel" name="telefone" placeholder="Seu Telefone" required>
-      <input type="email" name="email" placeholder="Seu E-mail" required>
-      <select name="perfil" id="perfil" required>
-        <option value="Aposentado">Aposentado</option>
-        <option value="Pensionista">Pensionista</option>
-        <option value="BPC/Loas">BPC/Loas</option>
-        <option value="Servidor Público">Servidor Público</option>
-        <option value="Militar">Militar</option>
-        <option value="Assalariado CLT">Assalariado CLT</option>
-      </select>
-      <select name="estado" required>
-        <option value="MG">Minas Gerais</option>
-        <option value="SP">São Paulo</option>
-        <option value="RJ">Rio de Janeiro</option>
-        <!-- Inclua mais estados conforme necessário -->
-      </select>
-      <div class="veiculo-campos" style="display: none;">
-        <input type="text" name="marca" placeholder="Marca do Veículo">
-        <input type="text" name="valor-compra" placeholder="Valor da Compra">
-        <input type="text" name="valor-financiar" placeholder="Valor a Financiar">
-      </div>
-      <div class="consentimento">
-        <input type="checkbox" id="aceite" required>
-        <label for="aceite">Li e concordo com a <a href="#">Política de Privacidade</a>.</label>
-      </div>
-      <small>Seus dados serão usados apenas para atendimento.</small>
-      <button type="submit">Enviar</button>
-    </form>
+  <div class="service" onclick="showForm('Financiamento de Veículos')">
+    <h3>Financiamento de Veículos</h3>
+    <p>Financiamos veículos novos e usados com ótimas condições.</p>
   </div>
+  <div class="service" onclick="showForm('Crédito com Garantia de Veículo')">
+    <h3>Crédito com Garantia de Veículo</h3>
+    <p>Use seu veículo como garantia e tenha acesso a taxas menores.</p>
+  </div>
+</div>
 
-  <footer>
-    <div class="footer-info">
-      <p>Global Credfácil - Todos os direitos reservados.</p>
+<div class="form-popup" id="popup-form">
+  <button class="back-btn" onclick="closeForm()">Voltar</button>
+  <h2>Simulação de Empréstimo</h2>
+  <form action="https://formsubmit.co/globalcredfacil@gmail.com" method="POST">
+    <input type="hidden" id="tipo-emprestimo" name="tipo-emprestimo">
+    <input type="text" name="nome" placeholder="Seu Nome" required>
+    <input type="text" name="cpf" placeholder="Seu CPF" required>
+    <input type="tel" name="telefone" placeholder="Seu Telefone" required>
+    <input type="email" name="email" placeholder="Seu E-mail" required>
+    <select name="perfil" id="perfil" required>
+      <option value="Aposentado">Aposentado</option>
+      <option value="Pensionista">Pensionista</option>
+      <option value="BPC/Loas">BPC/Loas</option>
+      <option value="Servidor Público">Servidor Público</option>
+      <option value="Militar">Militar</option>
+      <option value="Assalariado CLT">Assalariado CLT</option>
+    </select>
+    <select name="estado" required>
+      <option value="AC">Acre</option>
+      <option value="AL">Alagoas</option>
+      <option value="AP">Amapá</option>
+      <option value="AM">Amazonas</option>
+      <option value="BA">Bahia</option>
+      <option value="CE">Ceará</option>
+      <option value="DF">Distrito Federal</option>
+      <option value="ES">Espírito Santo</option>
+      <option value="GO">Goiás</option>
+      <option value="MA">Maranhão</option>
+      <option value="MT">Mato Grosso</option>
+      <option value="MS">Mato Grosso do Sul</option>
+      <option value="MG">Minas Gerais</option>
+      <option value="PA">Pará</option>
+      <option value="PB">Paraíba</option>
+      <option value="PR">Paraná</option>
+      <option value="PE">Pernambuco</option>
+      <option value="PI">Piauí</option>
+      <option value="RJ">Rio de Janeiro</option>
+      <option value="RN">Rio Grande do Norte</option>
+      <option value="RS">Rio Grande do Sul</option>
+      <option value="RO">Rondônia</option>
+      <option value="RR">Roraima</option>
+      <option value="SC">Santa Catarina</option>
+      <option value="SP">São Paulo</option>
+      <option value="SE">Sergipe</option>
+      <option value="TO">Tocantins</option>
+    </select>
+    <div class="veiculo-campos" style="display: none;">
+      <input type="text" name="marca" placeholder="Marca do Veículo">
+      <input type="text" name="valor-compra" placeholder="Valor da Compra">
+      <input type="text" name="valor-financiar" placeholder="Valor a Financiar">
     </div>
-  </footer>
+    <div class="consentimento">
+      <input type="checkbox" id="aceite" required>
+      <label for="aceite">Li e concordo com a <a href="#">Política de Privacidade</a>.</label>
+    </div>
+    <small>Seus dados serão usados apenas para atendimento.</small>
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-info">
+    <p>Global Credfácil - Todos os direitos reservados.</p>
+  </div>
+</footer>
 </body>
 </html>
