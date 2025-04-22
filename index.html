@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,6 +7,8 @@
   <meta name="robots" content="index, follow">
   <title>Global Credfácil Empréstimos</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Roboto', sans-serif; background-color: #f4f4f4; }
@@ -47,36 +50,41 @@
     }
   </style>
   <script>
+    $(document).ready(function(){
+      $('input[name="cpf"]').mask('000.000.000-00');
+      $('input[name="telefone"]').mask('(00)00000-0000');
+    });
+
     function showForm(service) {
       document.getElementById('popup-form').style.display = 'flex';
       document.getElementById('tipo-emprestimo').value = service;
+
+      if (service === 'Financiamento de Veículos' || service === 'Crédito com Garantia de Veículo') {
+        document.querySelector('.veiculo-campos').style.display = 'block';
+        document.getElementById('perfil').innerHTML = `
+          <option value="Aposentado">Aposentado</option>
+          <option value="Pensionista">Pensionista</option>
+          <option value="BPC/Loas">BPC/Loas</option>
+          <option value="Servidor Público">Servidor Público</option>
+          <option value="Militar">Militar</option>
+          <option value="Assalariado CLT">Assalariado CLT</option>
+          <option value="Outros">Outros</option>
+        `;
+      } else {
+        document.querySelector('.veiculo-campos').style.display = 'none';
+        document.getElementById('perfil').innerHTML = `
+          <option value="Aposentado">Aposentado</option>
+          <option value="Pensionista">Pensionista</option>
+          <option value="BPC/Loas">BPC/Loas</option>
+          <option value="Servidor Público">Servidor Público</option>
+          <option value="Militar">Militar</option>
+          <option value="Assalariado CLT">Assalariado CLT</option>
+        `;
+      }
     }
 
     function closeForm() {
       document.getElementById('popup-form').style.display = 'none';
-    }
-
-    function enviarFormulario(event) {
-      event.preventDefault();
-      if (!document.getElementById('aceite').checked) {
-        alert('Você precisa aceitar a Política de Privacidade para continuar.');
-        return;
-      }
-      var tipo = document.getElementById('tipo-emprestimo').value;
-      var nome = document.querySelector('input[name=nome]').value;
-      var cpf = document.querySelector('input[name=cpf]').value;
-      var telefone = document.querySelector('input[name=telefone]').value;
-      var email = document.querySelector('input[name=email]').value;
-      var perfil = document.querySelector('select[name=perfil]').value;
-
-      var texto = `Olá! Gostaria de simular um ${tipo}.%0A` +
-                  `Nome: ${nome}%0A` +
-                  `CPF: ${cpf}%0A` +
-                  `Telefone: ${telefone}%0A` +
-                  `Email: ${email}%0A` +
-                  `Perfil: ${perfil}`;
-
-      window.open(`https://wa.me/553235290010?text=${encodeURIComponent(texto)}`, '_blank');
     }
   </script>
 </head>
@@ -124,33 +132,43 @@
   <div class="form-popup" id="popup-form">
     <button class="back-btn" onclick="closeForm()">Voltar</button>
     <h2>Simulação de Empréstimo</h2>
-    <form onsubmit="enviarFormulario(event)">
+    <form action="https://formsubmit.co/globalcredfacil@gmail.com" method="POST">
       <input type="hidden" id="tipo-emprestimo" name="tipo-emprestimo">
       <input type="text" name="nome" placeholder="Seu Nome" required>
       <input type="text" name="cpf" placeholder="Seu CPF" required>
       <input type="tel" name="telefone" placeholder="Seu Telefone" required>
       <input type="email" name="email" placeholder="Seu E-mail" required>
-      <select name="perfil" required>
+      <select name="perfil" id="perfil" required>
         <option value="Aposentado">Aposentado</option>
         <option value="Pensionista">Pensionista</option>
         <option value="BPC/Loas">BPC/Loas</option>
         <option value="Servidor Público">Servidor Público</option>
         <option value="Militar">Militar</option>
+        <option value="Assalariado CLT">Assalariado CLT</option>
       </select>
+      <select name="estado" required>
+        <option value="MG">Minas Gerais</option>
+        <option value="SP">São Paulo</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <!-- Inclua mais estados conforme necessário -->
+      </select>
+      <div class="veiculo-campos" style="display: none;">
+        <input type="text" name="marca" placeholder="Marca do Veículo">
+        <input type="text" name="valor-compra" placeholder="Valor da Compra">
+        <input type="text" name="valor-financiar" placeholder="Valor a Financiar">
+      </div>
       <div class="consentimento">
         <input type="checkbox" id="aceite" required>
         <label for="aceite">Li e concordo com a <a href="#">Política de Privacidade</a>.</label>
       </div>
-      <small>Seus dados serão usados apenas para atendimento via WhatsApp.</small>
+      <small>Seus dados serão usados apenas para atendimento.</small>
       <button type="submit">Enviar</button>
     </form>
   </div>
 
   <footer>
-    <p>&copy; 2025 Global Credfácil - Todos os direitos reservados</p>
     <div class="footer-info">
-      <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a>
-      <p>CNPJ: 27.172.978/0001-97 | Endereço: Av. Cristiano Roças, 150 Loja A, Centro, Ubá - MG, CEP 36500-017</p>
+      <p>Global Credfácil - Todos os direitos reservados.</p>
     </div>
   </footer>
 </body>
