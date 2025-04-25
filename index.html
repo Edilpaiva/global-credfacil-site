@@ -150,53 +150,28 @@
             <!-- Campos para Financiamento de Veículos -->
             <div id="veiculo-fields" style="display:none;">
                 <label for="modelo">Modelo do Veículo:</label>
-                <input type="text" id="modelo" name="modelo" required>
+                <input type="text" id="modelo" name="modelo">
 
                 <label for="placa">Placa do Veículo:</label>
-                <input type="text" id="placa" name="placa" required>
+                <input type="text" id="placa" name="placa">
 
                 <label for="valor">Valor do Veículo:</label>
-                <input type="text" id="valor" name="valor" required>
+                <input type="text" id="valor" name="valor">
             </div>
 
             <div class="consentimento">
-                <input type="checkbox" name="consentimento" required>
-                <label for="consentimento">Eu aceito os <a href="#">termos e condições</a>.</label>
+                <input type="checkbox" id="consentimento" name="consentimento" required>
+                <label for="consentimento">Eu aceito os termos e condições</label>
             </div>
 
-            <button type="submit">Enviar</button>
+            <button type="submit">Enviar Simulação</button>
         </form>
     </div>
 
-    <!-- FAQ -->
-    <div class="faq-section" id="faq">
-        <h2>Perguntas Frequentes</h2>
-
-        <div class="faq-item">
-            <h3>O que é um empréstimo consignado?</h3>
-            <p>É um tipo de empréstimo onde as parcelas são descontadas diretamente da sua aposentadoria, pensão ou salário.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>Como posso solicitar um empréstimo com o FGTS?</h3>
-            <p>Você pode antecipar até 7 parcelas do seu FGTS, com dinheiro na conta em até 24 horas, mesmo negativado.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>Quais documentos são necessários para solicitar um empréstimo?</h3>
-            <p>Você precisará de um documento de identificação (RG ou CNH), CPF, comprovante de residência e, no caso de aposentados ou pensionistas, o comprovante de benefício.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>Posso financiar um veículo usado?</h3>
-            <p>Sim! Nós oferecemos financiamento para veículos novos e usados, com ótimas taxas e condições de pagamento.</p>
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2025 Global Credfácil. Todos os direitos reservados.</p>
+        <p>Global Credfácil © 2025. Todos os direitos reservados.</p>
         <div class="footer-info">
-            <p><a href="#">Termos e Condições</a> | <a href="#">Política de Privacidade</a></p>
+            <p><a href="https://www.globalcredfacil.com/termos" target="_blank">Termos de Serviço</a> | <a href="https://www.globalcredfacil.com/politica" target="_blank">Política de Privacidade</a></p>
         </div>
     </footer>
 
@@ -216,14 +191,6 @@
         function closeForm() {
             document.getElementById("simulationForm").style.display = "none";
         }
-
-        // Ativar e desativar respostas do FAQ
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            item.querySelector('h3').addEventListener('click', () => {
-                item.classList.toggle('active');
-            });
-        });
     </script>
 </body>
 </html>
