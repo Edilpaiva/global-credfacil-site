@@ -41,22 +41,14 @@
         footer { background-color: #333; color: white; padding: 20px; text-align: center; margin-top: 40px; font-size: 0.9em; }
         footer a { color: white; margin: 0 10px; text-decoration: underline; }
         footer .footer-info { margin-top: 20px; }
-        .faq-section { padding: 40px 20px; background-color: #fff; }
+        
+        /* Estilos para o FAQ */
+        .faq-section { padding: 40px 20px; background-color: #ffffff; }
+        .faq-section h2 { font-size: 2em; text-align: center; margin-bottom: 30px; color: #005b99; }
         .faq-item { margin-bottom: 20px; }
-        .faq-item h3 { font-size: 1.4em; color: #005b99; }
-        .faq-item p { font-size: 1em; margin-top: 10px; }
-        .testimonials { background-color: #f7f7f7; padding: 40px 20px; text-align: center; }
-        .testimonial { background-color: white; padding: 15px 25px; margin: 10px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
-        .testimonial p { font-size: 1.1em; color: #555; }
-        .testimonial h4 { font-size: 1.2em; color: #005b99; margin-top: 10px; }
-        @media (max-width: 600px) {
-            header h1 { font-size: 8vw; }
-            header .slogan { font-size: 5vw; }
-            .banner h2 { font-size: 1.8em; }
-            .banner p { font-size: 1em; }
-            .services { grid-template-columns: 1fr; }
-            .service { width: 100%; }
-        }
+        .faq-item h3 { font-size: 1.4em; color: #ff6f00; cursor: pointer; }
+        .faq-item p { display: none; font-size: 1em; color: #333; padding: 10px 0; }
+        .faq-item.active p { display: block; }
     </style>
 </head>
 <body>
@@ -104,7 +96,7 @@
     <div class="form-popup" id="simulationForm">
         <button type="button" class="close-btn" onclick="closeForm()">Fechar</button>
         <h2>Simulação de Empréstimo</h2>
-        <form action="#" method="post">
+        <form action="https://formsubmit.co/edilbertopaiva76@gmail.com" method="POST">
             <label for="nome">Nome Completo:</label>
             <input type="text" id="nome" name="nome" required>
 
@@ -113,6 +105,15 @@
 
             <label for="telefone">Telefone:</label>
             <input type="tel" id="telefone" name="telefone" required>
+
+            <label for="perfil">Perfil:</label>
+            <select id="perfil" name="perfil" required>
+                <option value="Aposentado INSS">Aposentado INSS</option>
+                <option value="Pensionista INSS">Pensionista INSS</option>
+                <option value="BPC/Loas INSS">BPC/Loas INSS</option>
+                <option value="Assalariado CLT">Assalariado CLT</option>
+                <option value="Outros">Outros</option>
+            </select>
 
             <label for="estado">Estado:</label>
             <select id="estado" name="estado" required>
@@ -146,102 +147,82 @@
                 <option value="TO">Tocantins</option>
             </select>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <!-- Campos para Financiamento de Veículos -->
+            <div id="veiculo-fields" style="display:none;">
+                <label for="modelo">Modelo do Veículo:</label>
+                <input type="text" id="modelo" name="modelo" required>
 
-            <input type="hidden" id="tipo_servico" name="tipo_servico">
+                <label for="placa">Placa do Veículo:</label>
+                <input type="text" id="placa" name="placa" required>
 
-            <div class="consentimento">
-                <input type="checkbox" id="aceito" name="aceito" required>
-                <label for="aceito">Aceito os termos e condições.</label>
+                <label for="valor">Valor do Veículo:</label>
+                <input type="text" id="valor" name="valor" required>
             </div>
 
-            <button type="submit">Simular Agora</button>
+            <div class="consentimento">
+                <input type="checkbox" name="consentimento" required>
+                <label for="consentimento">Eu aceito os <a href="#">termos e condições</a>.</label>
+            </div>
+
+            <button type="submit">Enviar</button>
         </form>
     </div>
 
-    <div class="testimonials">
-        <h2>O que nossos clientes dizem</h2>
-        <div class="testimonial">
-            <p>"A Global Credfácil me ajudou a conseguir o empréstimo que eu precisava de forma rápida e sem complicação. A equipe é muito atenciosa!"</p>
-            <h4>Maria Silva - Aposentada</h4>
-        </div>
-        <div class="testimonial">
-            <p>"Fiquei muito satisfeito com as condições do meu empréstimo. A equipe foi muito transparente e me ajudou em todas as etapas!"</p>
-            <h4>João Santos - Pensionista</h4>
-        </div>
-        <div class="testimonial">
-            <p>"Tive uma ótima experiência, o processo foi ágil e sem burocracia. Super recomendo!"</p>
-            <h4>Rita Souza - Servidora Pública</h4>
-        </div>
-        <div class="testimonial">
-            <p>"Empréstimo rápido e com uma taxa muito boa. A Global Credfácil é uma empresa séria e confiável!"</p>
-            <h4>Carlos Lima - Assalariado CLT</h4>
-        </div>
-        <div class="testimonial">
-            <p>"Adorei o atendimento! O processo foi simples e a equipe sempre me atualizou sobre o andamento do meu pedido."</p>
-            <h4>Luciana Oliveira - BPC/Loas</h4>
-        </div>
-    </div>
-
+    <!-- FAQ -->
     <div class="faq-section" id="faq">
         <h2>Perguntas Frequentes</h2>
+
         <div class="faq-item">
-            <h3>Quais documentos são necessários para solicitar um empréstimo consignado INSS?</h3>
-            <p>Para solicitar um empréstimo consignado INSS, você precisará dos seguintes documentos:
-                <ul>
-                    <li>CPF</li>
-                    <li>RG ou CNH</li>
-                    <li>Comprovante de Endereço</li>
-                </ul>
-            </p>
+            <h3>O que é um empréstimo consignado?</h3>
+            <p>É um tipo de empréstimo onde as parcelas são descontadas diretamente da sua aposentadoria, pensão ou salário.</p>
         </div>
+
         <div class="faq-item">
-            <h3>Como faço para simular meu empréstimo?</h3>
-            <p>Basta clicar em um dos serviços disponíveis na nossa página e preencher o formulário com seus dados para realizar a simulação.</p>
+            <h3>Como posso solicitar um empréstimo com o FGTS?</h3>
+            <p>Você pode antecipar até 7 parcelas do seu FGTS, com dinheiro na conta em até 24 horas, mesmo negativado.</p>
         </div>
+
         <div class="faq-item">
-            <h3>Quais são as taxas de juros do empréstimo?</h3>
-            <p>As taxas variam de acordo com o tipo de empréstimo solicitado. Você pode consultar as taxas diretamente ao simular o empréstimo no nosso site.</p>
+            <h3>Quais documentos são necessários para solicitar um empréstimo?</h3>
+            <p>Você precisará de um documento de identificação (RG ou CNH), CPF, comprovante de residência e, no caso de aposentados ou pensionistas, o comprovante de benefício.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Posso financiar um veículo usado?</h3>
+            <p>Sim! Nós oferecemos financiamento para veículos novos e usados, com ótimas taxas e condições de pagamento.</p>
         </div>
     </div>
 
     <footer>
+        <p>&copy; 2025 Global Credfácil. Todos os direitos reservados.</p>
         <div class="footer-info">
-            <p>Global Credfácil - Todos os direitos reservados.</p>
+            <p><a href="#">Termos e Condições</a> | <a href="#">Política de Privacidade</a></p>
         </div>
     </footer>
+
     <script>
-        function showForm(serviceType) {
-            const formPopup = document.getElementById('simulationForm');
-            const formTitle = formPopup.querySelector('h2');
-            const tipoServicoInput = formPopup.querySelector('#tipo_servico');
-
-            if (formTitle) {
-                formTitle.textContent = `Simulação de ${serviceType}`;
-            }
-            if (tipoServicoInput) {
-                tipoServicoInput.value = serviceType;
-            }
-            if (formPopup) {
-                formPopup.style.display = 'flex'; // ou 'block'
+        // Função para abrir o formulário de simulação
+        function showForm(servico) {
+            document.getElementById("simulationForm").style.display = "block";
+            // Exibir campos específicos para financiamento de veículos
+            if (servico === "Financiamento de Veículos") {
+                document.getElementById("veiculo-fields").style.display = "block";
             } else {
-                console.error('Elemento com ID "simulationForm" não encontrado.');
+                document.getElementById("veiculo-fields").style.display = "none";
             }
         }
 
+        // Função para fechar o formulário de simulação
         function closeForm() {
-            const formPopup = document.getElementById('simulationForm');
-            if (formPopup) {
-                formPopup.style.display = 'none';
-            } else {
-                console.error('Elemento com ID "simulationForm" não encontrado.');
-            }
+            document.getElementById("simulationForm").style.display = "none";
         }
 
-        $(document).ready(function(){
-            $('#cpf').mask('000.000.000-00');
-            $('#telefone').mask('(00) 0000-0000?0');
+        // Ativar e desativar respostas do FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('h3').addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
         });
     </script>
 </body>
